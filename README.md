@@ -28,7 +28,10 @@ Further, there are tasks db:dump and db:load which do the entire database (the e
     rake db:data:dump_dir   ->   Dump contents of database to db/<data_dir>/<tablename>.<extension> (defaults to yaml)
     rake db:data:load_dir   ->   Load contents of db/<data_dir> into database
 
-Default `<data_dir>` is `%F_%T` (Ruby's Time#strftime).
+Default `<data_dir>` is `%F_%T` (see Ruby's Time#strftime).  And we can change `<data_dir>` by `dir` parameter.
+
+    rake db:data:dump_dir dir=before_exciting_migrations   ->   Dump contents of database to db/before_exciting_migrations/<tablename>.<extension>
+    rake db:data:load_dir dir=before_exciting_migrations   ->   Load contents of db/before_exciting_migrations/ into database
 
 In addition, we have plugins whereby you can export your database to/from various formats.  We only deal with yaml and csv right now, but you can easily write tools for your own formats (such as Excel or XML).  To use another format, just load setting the "class"  parameter to the class you are using.  This defaults to "YamlDb::Helper" which is a refactoring of the old yaml_db code.  We'll shorten this to use class nicknames in a little bit.
 
